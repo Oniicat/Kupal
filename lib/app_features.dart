@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:lakbay_rizal/discover_rizal.dart';
 import 'package:lakbay_rizal/navbar.dart';
 
 class AppFeatures extends StatefulWidget {
@@ -265,7 +266,10 @@ class _AppFeaturesState extends State<AppFeatures> {
                                         ),
                                       ),
                                       onPressed: () {
-                                        // Your onPressed logic
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(builder: (context) => DiscoverRizal()),
+                                        );
                                       },
                                       child: Column(
                                         mainAxisAlignment: MainAxisAlignment.center,

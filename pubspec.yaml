@@ -39,6 +39,7 @@ dependencies:
   flutter_screenutil: ^5.9.3
   provider: ^6.0.5
   carousel_slider: ^5.0.0
+  firebase_core: ^3.6.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -86,6 +87,9 @@ flutter:
     - assets/wheel.png
     - assets/river.png
     - assets/lakbay rizal.png
+    - assets/beach.jpg
+    - assets/hiking.jpg
+    - assets/museum.jpg
 
   #   - images/a_dot_ham.jpeg
 

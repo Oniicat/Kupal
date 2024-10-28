@@ -16,10 +16,10 @@ class NavBar extends StatefulWidget {
 
 class _NavbarState extends State<NavBar> {
   int _currentIndex = 0;
-  final List<Widget> screens =  [
+  final List<Widget> screens = [
     slider(),
     AppFeatures(),
-    CityButtonsRow(),
+    CityButtons(),
     Messages(),
     ProfileScreen(),
   ];
@@ -27,43 +27,52 @@ class _NavbarState extends State<NavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: screens[_currentIndex],
+      body: _currentIndex == 2 // Check if the current index is for "Add"
+          ? Container() // Show an empty container or some other content
+          : screens[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (int newIndex) {
-          setState(() {
-            _currentIndex = newIndex;
-          });
+          if (newIndex == 2) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => CityButtons()),
+            );
+          } else {
+            setState(() {
+              _currentIndex = newIndex; // Update current index for other items
+            });
+          }
         },
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.house),
-            label: 'Home', // Added label
+            label: 'Home',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.menu),
-            label: 'Menu', // Added label
+            label: 'Menu',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.add),
-            label: 'Add', // Added label
+            label: 'Add',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.message),
-            label: 'Messages', // Added label
+            label: 'Messages',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_circle),
-            label: 'Profile', // Added label
+            label: 'Profile',
           ),
         ],
-        selectedItemColor: Color(0xFFA52424), // Customize as needed
-        unselectedItemColor: Colors.grey, // Customize as needed
+        selectedItemColor: Color(0xFFA52424),
+        unselectedItemColor: Colors.grey,
       ),
-
     );
   }
 }
+
 
 class MenuScreen extends StatelessWidget {
   @override

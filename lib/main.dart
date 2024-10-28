@@ -1,6 +1,8 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:lakbay_rizal/app_features.dart';
 import 'package:lakbay_rizal/create_itinerary.dart';
+import 'package:lakbay_rizal/discover_rizal.dart';
 import 'package:lakbay_rizal/profile.dart';
 import 'package:lakbay_rizal/splash_screen.dart';
 import 'package:lakbay_rizal/navbar.dart';
@@ -11,7 +13,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lakbay_rizal/application_theme.dart';
 import 'package:lakbay_rizal/carousel.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(
     ChangeNotifierProvider(
       create: (context) => ThemeProvider(),
@@ -22,14 +26,14 @@ void main() {
 class MyApp extends StatelessWidget {   //dito sa my app ilalagay kung anong class or screen unang lalabas
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: Provider.of<ThemeProvider>(context).themeData,
       debugShowCheckedModeBanner: false,
-      home: NavBar(),
+      home: Welcomewidgets(),
     );
   }
 }
